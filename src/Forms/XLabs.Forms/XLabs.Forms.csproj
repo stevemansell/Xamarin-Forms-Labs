@@ -165,7 +165,7 @@
       <Name>XLabs.Platform</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
-      <Project>{6C5C17D3-E6E8-4201-B11F-7C50B02E8E3D}</Project>
+      <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
       <Name>XLabs.Serialization</Name>
     </ProjectReference>
   </ItemGroup>

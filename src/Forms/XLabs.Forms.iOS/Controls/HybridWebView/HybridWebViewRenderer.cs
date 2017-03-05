@@ -124,6 +124,9 @@ namespace XLabs.Forms.Controls
                     UserContentController = _userController
                 };
 
+                // SDM
+                config.Preferences.SetValueForKey(new NSNumber(1), new NSString("allowFileAccessFromFileURLs"));
+
                 var script = new WKUserScript(new NSString(NativeFunction + GetFuncScript()), WKUserScriptInjectionTime.AtDocumentEnd, false);
 
                 _userController.AddUserScript(script);
@@ -131,7 +134,7 @@ namespace XLabs.Forms.Controls
                 _userController.AddScriptMessageHandler(this, "native");
 
                 var webView = new WKWebView(Frame, config) { WeakNavigationDelegate = this };
-
+                
                 SetNativeControl(webView);
 
                 //webView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
@@ -186,8 +189,10 @@ namespace XLabs.Forms.Controls
 
         partial void LoadFromContent(object sender, HybridWebView.LoadContentEventArgs contentArgs)
         {
-            var baseUri = contentArgs.BaseUri ?? GetTempDirectory();
-            Element.Uri = new Uri(baseUri + "/" + contentArgs.Content);
+            //var baseUri = contentArgs.BaseUri ?? GetTempDirectory();
+            Control.LoadFileUrl(new NSUrl(contentArgs.Content), new NSUrl(contentArgs.BaseUri, true));
+            //Element.Uri = new Uri(baseUri + "/" + contentArgs.Content);
+
             //Element.Uri = new Uri(NSBundle.MainBundle.BundlePath + "/" + contentFullName);
             //Control.LoadHtmlString(new NSString(contentFullName), new NSUrl(NSBundle.MainBundle.BundlePath, true));
         }
