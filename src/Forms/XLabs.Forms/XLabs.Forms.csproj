@@ -8,7 +8,7 @@
     <ProjectGuid>{59AD9D73-9348-4262-A869-6168057DA26A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XLabs.Forms</RootNamespace>
+    <RootNamespace>XLabs.Formsx</RootNamespace>
     <AssemblyName>XLabs.Forms</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
@@ -161,7 +161,7 @@
       <Name>XLabs.IOC</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Platform\XLabs.Platform\XLabs.Platform.csproj">
-      <Project>{7B43B9F5-7C88-42F1-B217-34A24AE925D0}</Project>
+      <Project>{7b43b9f5-7c88-42f1-b217-34a24ae925d0}</Project>
       <Name>XLabs.Platform</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">

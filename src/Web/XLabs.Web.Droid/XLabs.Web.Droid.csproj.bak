@@ -5,17 +5,17 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0E2E8AEC-8DC9-4C9D-8680-903805F92FD4}</ProjectGuid>
+    <ProjectGuid>{1704EB24-5FBA-4E98-9CD4-EE2EE4610A94}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XLabs.Platform</RootNamespace>
-    <AssemblyName>XLabs.Platform.Droid</AssemblyName>
+    <RootNamespace>XLabs.Web.Droid</RootNamespace>
+    <AssemblyName>XLabs.Web.Droid</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -41,49 +41,22 @@
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Device\Accelerometer.cs" />
-    <Compile Include="Device\AndroidDevice.cs" />
-    <Compile Include="Device\Battery.cs" />
-    <Compile Include="Device\BluetoothDevice.cs" />
-    <Compile Include="Device\BluetoothHub.cs" />
-    <Compile Include="Device\BroadcastMonitor.cs" />
-    <Compile Include="Device\Display.cs" />
-    <Compile Include="Device\Gyroscope.cs" />
-    <Compile Include="Extensions\BroadcastReceiverExtensions.cs" />
-    <Compile Include="Extensions\IntentExtensions.cs" />
-    <Compile Include="Extensions\IntentFilterExtensions.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
-    <Compile Include="Extensions\UriExtensions.cs" />
-    <Compile Include="Extensions\ViewExtensions.cs" />
-    <Compile Include="Extensions\ViewGroupExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\..\AssemblyInfo.Shared.cs">
       <Link>Properties\AssemblyInfo.Shared.cs</Link>
     </Compile>
-    <Compile Include="Services\Email\EmailService.cs" />
-    <Compile Include="Services\Geolocation\GeolocationContinuousListener.cs" />
-    <Compile Include="Services\Geolocation\GeolocationSingleListener.cs" />
-    <Compile Include="Services\Geolocation\Geolocator.cs" />
-    <Compile Include="Services\KeyVaultStorage.cs" />
-    <Compile Include="Services\Media\MediaPicker.cs" />
-    <Compile Include="Services\Media\MediaPickerActivity.cs" />
-    <Compile Include="Services\Media\Microphone.cs" />
-    <Compile Include="Services\Media\SoundService.cs" />
-    <Compile Include="Services\Network.cs" />
-    <Compile Include="Services\NfcDevice.cs" />
-    <Compile Include="Services\PhoneService.cs" />
-    <Compile Include="Services\Reachability.cs" />
-    <Compile Include="Services\SharedPreferencesStorage.cs" />
-    <Compile Include="Services\TextToSpeechService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -91,25 +64,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\XLabs.Core.csproj">
-      <Project>{486ABBD5-9E4D-4BD2-A6FB-82E0E3B5A163}</Project>
+      <Project>{486abbd5-9e4d-4bd2-a6fb-82e0e3b5a163}</Project>
       <Name>XLabs.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\IOC\XLabs.IOC\XLabs.IOC.csproj">
-      <Project>{88F99257-B7A1-4C67-B134-7BDAD63AEEF1}</Project>
-      <Name>XLabs.IOC</Name>
+    <ProjectReference Include="..\..\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
+      <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
+      <Name>XLabs.Serialization</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XLabs.Platform\XLabs.Platform.csproj">
-      <Project>{7b43b9f5-7c88-42f1-b217-34a24ae925d0}</Project>
-      <Name>XLabs.Platform</Name>
+    <ProjectReference Include="..\XLabs.Web\XLabs.Web.csproj">
+      <Project>{f9f8ec0b-d46d-40ec-babf-f9d499ce451a}</Project>
+      <Name>XLabs.Web</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\IO\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="FodyWeavers.xml" />
-  </ItemGroup>
-  <Import Project="..\XLabs.Platform.Shared\XLabs.Platform.Shared.projitems" Label="Shared" />
+  <Import Project="..\XLabs.Web.Shared\XLabs.Web.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

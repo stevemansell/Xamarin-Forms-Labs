@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 namespace XLabs.Serialization.JsonNET
 {
     using Newtonsoft.Json.Serialization;
+    using Serialization;
 
     /// <summary>
     /// JSON serializer using Newtonsoft.Json library.
