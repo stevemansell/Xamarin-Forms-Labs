@@ -27,6 +27,7 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using XLabs.Forms.Controls;
+using System.Collections;
 
 [assembly: ExportRenderer(typeof(BindablePicker), typeof(BindablePickerRenderer))]
 
