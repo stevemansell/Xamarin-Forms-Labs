@@ -42,7 +42,7 @@ namespace XLabs.Forms.Controls
         /// <summary>
         /// Allows one to override the Webview Client class without a custom renderer.
         /// </summary>
-        public static Func<HybridWebViewRenderer,Client> GetWebViewClientDelegate;
+        public static Func<HybridWebViewRenderer, Client> GetWebViewClientDelegate;
 
         /// <summary>
         /// Allows one to override the Chrome Client class without a custom renderer.
@@ -73,7 +73,7 @@ namespace XLabs.Forms.Controls
         /// <param name="e">The e.</param>
         protected override void OnElementChanged(ElementChangedEventArgs<HybridWebView> e)
         {
-            base.OnElementChanged (e);
+            base.OnElementChanged(e);
 
             if (this.Control == null && e.NewElement != null)
             {
@@ -145,13 +145,13 @@ namespace XLabs.Forms.Controls
             return d != null ? d(this) : new ChromeClient();
         }
 
-        partial void HandleCleanup() 
+        partial void HandleCleanup()
         {
             if (Control == null) return;
 
-            Control.SetWebViewClient (null);
-            Control.SetWebChromeClient (null);
-            Control.RemoveJavascriptInterface ("Xamarin");
+            Control.SetWebViewClient(null);
+            Control.SetWebChromeClient(null);
+            Control.RemoveJavascriptInterface("Xamarin");
         }
 
         private void OnPageFinished()
@@ -168,9 +168,13 @@ namespace XLabs.Forms.Controls
         /// <param name="script">The script.</param>
         partial void Inject(string script)
         {
-            if (Control != null) 
+            if (Control != null)
             {
-                this.Control.LoadUrl(string.Format("javascript: {0}", script));
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    // manipulate UI controls
+                    this.Control.LoadUrl(string.Format("javascript: {0}", script));
+                });
             }
         }
 
@@ -182,7 +186,11 @@ namespace XLabs.Forms.Controls
         {
             if (uri != null && Control != null)
             {
-                this.Control.LoadUrl(uri.AbsoluteUri);
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    // manipulate UI controls
+                    this.Control.LoadUrl(uri.AbsoluteUri);
+                });
             }
         }
 
@@ -204,7 +212,7 @@ namespace XLabs.Forms.Controls
         /// <param name="content">Full name of the content.</param>
         partial void LoadContent(object sender, HybridWebView.LoadContentEventArgs contentArgs)
         {
-            if (Control != null) 
+            if (Control != null)
             {
                 var baseUri = contentArgs.BaseUri ?? "file:///android_asset/";
                 this.Control.LoadDataWithBaseURL(baseUri, contentArgs.Content, "text/html", "UTF-8", null);
@@ -217,7 +225,7 @@ namespace XLabs.Forms.Controls
         /// <param name="html">The HTML.</param>
         partial void LoadFromString(string html)
         {
-            if (Control != null) 
+            if (Control != null)
             {
                 this.Control.LoadData(html, "text/html", "UTF-8");
             }
@@ -308,7 +316,7 @@ namespace XLabs.Forms.Controls
         /// <summary>
         /// Class ChromeClient.
         /// </summary>
-        public class ChromeClient : WebChromeClient 
+        public class ChromeClient : WebChromeClient
         {
             /// <summary>
             /// Overrides the geolocation prompt and accepts the permission.
@@ -404,35 +412,35 @@ namespace XLabs.Forms.Controls
                     this.webHybrid = new WeakReference<HybridWebViewRenderer>(renderer);
                 }
 
-//                public override void OnLongPress(MotionEvent e)
-//                {
-//                    Console.WriteLine("OnLongPress");
-//                    base.OnLongPress(e);
-//                }
-//
-//                public override bool OnDoubleTap(MotionEvent e)
-//                {
-//                    Console.WriteLine("OnDoubleTap");
-//                    return base.OnDoubleTap(e);
-//                }
-//
-//                public override bool OnDoubleTapEvent(MotionEvent e)
-//                {
-//                    Console.WriteLine("OnDoubleTapEvent");
-//                    return base.OnDoubleTapEvent(e);
-//                }
-//
-//                public override bool OnSingleTapUp(MotionEvent e)
-//                {
-//                    Console.WriteLine("OnSingleTapUp");
-//                    return base.OnSingleTapUp(e);
-//                }
-//
-//                public override bool OnDown(MotionEvent e)
-//                {
-//                    Console.WriteLine("OnDown");
-//                    return base.OnDown(e);
-//                }
+                //                public override void OnLongPress(MotionEvent e)
+                //                {
+                //                    Console.WriteLine("OnLongPress");
+                //                    base.OnLongPress(e);
+                //                }
+                //
+                //                public override bool OnDoubleTap(MotionEvent e)
+                //                {
+                //                    Console.WriteLine("OnDoubleTap");
+                //                    return base.OnDoubleTap(e);
+                //                }
+                //
+                //                public override bool OnDoubleTapEvent(MotionEvent e)
+                //                {
+                //                    Console.WriteLine("OnDoubleTapEvent");
+                //                    return base.OnDoubleTapEvent(e);
+                //                }
+                //
+                //                public override bool OnSingleTapUp(MotionEvent e)
+                //                {
+                //                    Console.WriteLine("OnSingleTapUp");
+                //                    return base.OnSingleTapUp(e);
+                //                }
+                //
+                //                public override bool OnDown(MotionEvent e)
+                //                {
+                //                    Console.WriteLine("OnDown");
+                //                    return base.OnDown(e);
+                //                }
 
                 /// <summary>
                 /// Called when [fling].
@@ -448,11 +456,11 @@ namespace XLabs.Forms.Controls
 
                     if (this.webHybrid.TryGetTarget(out hybrid) && Math.Abs(velocityX) > SWIPE_THRESHOLD_VELOCITY)
                     {
-                        if(e1.GetX() - e2.GetX() > SWIPE_MIN_DISTANCE) 
+                        if (e1.GetX() - e2.GetX() > SWIPE_MIN_DISTANCE)
                         {
                             hybrid.Element.OnLeftSwipe(this, EventArgs.Empty);
-                        }  
-                        else if (e2.GetX() - e1.GetX() > SWIPE_MIN_DISTANCE) 
+                        }
+                        else if (e2.GetX() - e1.GetX() > SWIPE_MIN_DISTANCE)
                         {
                             hybrid.Element.OnRightSwipe(this, EventArgs.Empty);
                         }
@@ -461,23 +469,23 @@ namespace XLabs.Forms.Controls
                     return base.OnFling(e1, e2, velocityX, velocityY);
                 }
 
-//                public override bool OnScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY)
-//                {
-//                    Console.WriteLine("OnScroll");
-//                    return base.OnScroll(e1, e2, distanceX, distanceY);
-//                }
-//
-//                public override void OnShowPress(MotionEvent e)
-//                {
-//                    Console.WriteLine("OnShowPress");
-//                    base.OnShowPress(e);
-//                }
-//
-//                public override bool OnSingleTapConfirmed(MotionEvent e)
-//                {
-//                    Console.WriteLine("OnSingleTapConfirmed");
-//                    return base.OnSingleTapConfirmed(e);
-//                }
+                //                public override bool OnScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY)
+                //                {
+                //                    Console.WriteLine("OnScroll");
+                //                    return base.OnScroll(e1, e2, distanceX, distanceY);
+                //                }
+                //
+                //                public override void OnShowPress(MotionEvent e)
+                //                {
+                //                    Console.WriteLine("OnShowPress");
+                //                    base.OnShowPress(e);
+                //                }
+                //
+                //                public override bool OnSingleTapConfirmed(MotionEvent e)
+                //                {
+                //                    Console.WriteLine("OnSingleTapConfirmed");
+                //                    return base.OnSingleTapConfirmed(e);
+                //                }
 
             }
         }
