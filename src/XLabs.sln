@@ -1,16 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2015
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLabs.Core", "Core\XLabs.Core.csproj", "{486ABBD5-9E4D-4BD2-A6FB-82E0E3B5A163}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{8507F10B-CF78-4193-BC5B-C602837092B3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forms", "Forms", "{C1296FBA-3002-40B6-B762-FF1E87FBC9B1}"
-	ProjectSection(SolutionItems) = preProject
-		Forms\XLabs.Forms.Droid\XLabs.Forms.Droid.csproj = Forms\XLabs.Forms.Droid\XLabs.Forms.Droid.csproj
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IOC", "IOC", "{00F4EF06-97F7-4854-8DD9-7F9AE4A1201A}"
 EndProject
@@ -131,7 +128,6 @@ Global
 		Web\XLabs.Web.Shared\XLabs.Web.Shared.projitems*{395a8d8c-c5bf-4006-aed6-86937a724331}*SharedItemsImports = 4
 		Web\XLabs.Web.WinRT.Shared\XLabs.Web.WinRT.Shared.projitems*{395a8d8c-c5bf-4006-aed6-86937a724331}*SharedItemsImports = 4
 		Serialization\XLabs.Serialization.ServiceStack.Shared\XLabs.Serialization.ServiceStackV3.Shared.projitems*{480a3b69-7110-400a-b06b-9f9e648d61e9}*SharedItemsImports = 4
-		Forms\XLabs.Forms.Shared\XLabs.Forms.Shared.projitems*{5f75f28c-0e83-4594-97f1-9cdf806db5f2}*SharedItemsImports = 4
 		Web\XLabs.Web.Shared\XLabs.Web.Shared.projitems*{663cd8d6-a2f1-4ea4-9451-e93a773961d0}*SharedItemsImports = 13
 		IOC\XLabs.IOC.TinyIOC.Shared\XLabs.IOC.TinyIOC.Shared.projitems*{68e59ea0-b902-43b9-9b40-9f10fe8bfca0}*SharedItemsImports = 4
 		Serialization\XLabs.Serialization.ServiceStack.Shared\XLabs.Serialization.ServiceStackV3.Shared.projitems*{70ea5fd6-61bf-4ddf-9cf3-fbe1012f575f}*SharedItemsImports = 13
@@ -2258,8 +2254,5 @@ Global
 		{C32010C6-5115-467A-9724-3B5AAD6DD7D2} = {E8D7A746-40A5-4BD6-B51D-11DE19158AB2}
 		{663CD8D6-A2F1-4EA4-9451-E93A773961D0} = {544F385E-BF56-474C-99FE-C8CB45B33EF9}
 		{EB37D7B5-A0CD-4447-B655-1430F7E919E9} = {4C1036E4-273C-42D7-B95D-5829B4583887}
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F4023432-817E-4D04-A154-964D5A17610C}
 	EndGlobalSection
 EndGlobal
